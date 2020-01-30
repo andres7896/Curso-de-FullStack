@@ -1,0 +1,16 @@
+git add fileName //guarda el archivo y le hace seguimiento
+git commit -m  //Permite agrear un comentario o descripción
+git push origin master //Permite subi y nombrar repositirio remoto
+git fetch //Permite saber los cambios que se han realizados
+git pull origin master // Incorpora cambios desde un repositorio remoto en la rama actual
+git init //Permite hacer que git rastree la carpeta
+git status //Permite ver el estatus del repositorio
+git config --global user.email "sneider7896@gmail.com" //Permite cambiar el correo
+git config --global user.name "Andrés García" //Permite cambiar el Nombre de Usuarios
+git diff origin/master //Permite comparar los repositirios local y remoto
+git log // Permite ver los commint que tengo en el repositirio
+git add . //Me agrega varios archivo al tiempo
+
+
+origin => repositorio remoto
+master o develop => Rama

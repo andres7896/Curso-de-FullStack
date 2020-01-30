@@ -1,0 +1,9 @@
+Profesor Jeisson Rosas
+Correo: jeisson.rosas@bit.institute
+
+FlexBox 
+
+Las ubica en orden
+
+1 2 3 4 5 6
+

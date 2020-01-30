@@ -1,0 +1,1 @@
+document.querySelector('#mi-boton').style.display = 'inline-block';
