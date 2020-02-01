@@ -188,4 +188,40 @@ ropa.forEach(function (prendas) {
 
 contenedor.innerHTML = contenido*/
 
+/* 
+var lista = [
+    {nombre: 'Uvas', precio: 1300}, 
+    {nombre: 'Fresas', precio: 900},   
+    {nombre: 'Mangos', precio: 1780}
+]
 
+function comparador(obj1, obj2){
+    if(obj1.precio > obj2.precio){
+        return 1
+    }else{
+        return -1
+    }
+}
+
+lista.sort(comparador)
+(3) [{…}, {…}, {…}]
+0: {nombre: "Fresas", precio: 900}
+1: {nombre: "Uvas", precio: 1300}
+2: {nombre: "Mangos", precio: 1780}
+
+function comparador(obj1, obj2){
+    if(obj1.precio > obj2.precio){
+        return -1
+    }else{
+        return 1
+    }
+}
+
+lista.sort(comparador)
+(3) [{…}, {…}, {…}]
+0: {nombre: "Mangos", precio: 1780}
+1: {nombre: "Uvas", precio: 1300}
+2: {nombre: "Fresas", precio: 900}
+length: 3
+__proto__: Array(0)
+*/

@@ -8,32 +8,41 @@
     <title>Ordenar - JS</title>
 </head>
 <body>
-    <header>
-        <h1>Filtrar por</h1>
-    </header>
+    
     <div id="section">
+        <header>
+            <h1>Filtrar por</h1>
+        </header>
         <select id="seleccion">
             <option></option>
             <option value="computador">Computadores</option>
             <option value="ropa">Ropa</option>
-            <option value="celular">Celulares</option>
+            <option value="celulares">Celulares</option>
         </select>
-    </div>
-    <header>
-        <h1>Ordenar por</h1>
-    </header>
-    <div id="section">
+        <header>
+            <h1>Ordenar por</h1>
+        </header>
         <select id="ordenar">
             <option></option>
             <option value="computador">Computadores</option>
             <option value="ropa">Ropa</option>
             <option value="celular">Celulares</option>
         </select>
+        <header>
+            <h1>Mostrar Primero</h1>
+        </header>
+        <select id="primero">
+            <option></option>
+            <option value="MayorAMenor">Precio del Mayor a menor</option>
+            <option value="MenorAMayor">Precio del Menor a mayor</option>
+            <option value="Az">De la A a la Z</option>
+            <option value="Za">De la Z a la A</option>
+        </select>
     </div>
     <div id="container">
         
     </div>
-
+    
     <script src="data.js"></script>
 </body>
 </html>

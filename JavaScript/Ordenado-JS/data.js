@@ -1,12 +1,100 @@
-/*function filtrado() {
-    let producto = document.querySelector('#seleccion').value;
-    var celular = document.querySelectorAll('#celular');
-    var saco = document.querySelectorAll('#saco');
-    var pc = document.querySelectorAll('#computadora');
-    var pantalon = document.querySelectorAll('#pantalon');
+const contenedor = document.querySelector('#container')
+const select = document.querySelector('#ordenar')
+const opcion = document.querySelector('#primero')
+console.log(contenedor, select)
 
-    switch (producto.toLowerCase()) {
-        case 'celular':
+var productos = [
+    {
+        imagen: 'img/celular.jpg',
+        titulo: 'Xiaomi Mi',
+        clase: 'celulares',
+        precio: '$ 1500000'
+    },
+    {
+        imagen: 'img/saco.jpg',
+        titulo: 'GAP',
+        clase: 'ropa',
+        precio: '$ 80000'
+    },
+    {
+        imagen: 'img/celular.jpg',
+        titulo: 'Iphone X',
+        clase: 'celulares',
+        precio: '$ 3450000'
+    },
+    {
+        imagen: 'img/celular.jpg',
+        titulo: 'Huawei P30',
+        clase: 'celulares',
+        precio: '$ 2000000'
+    },
+    {
+        imagen: 'img/pantalon.jpg',
+        titulo: 'Calvin Klein',
+        clase: 'ropa',
+        precio: '$ 90000'
+    },
+    {
+        imagen: 'img/pantalon.jpg',
+        titulo: 'KOAJ',
+        clase: 'ropa',
+        precio: '$ 90000'
+    },
+    {
+        imagen: 'img/celular.jpg',
+        titulo: 'Moto G4',
+        clase: 'celulares',
+        precio: '$ 650000'
+    },
+    {
+        imagen: 'img/pantalon.jpg',
+        titulo: 'Levis',
+        clase: 'ropa',
+        precio: '$ 80000'
+    },
+    {
+        imagen: 'img/pc.jpg',
+        titulo: 'MAC',
+        clase: 'computadora',
+        precio: '$ 1480000'
+    },
+    {
+        imagen: 'img/pc.jpg',
+        titulo: 'ASUS',
+        clase: 'computadora',
+        precio: '$ 2080000'
+    }
+]
+
+function dibujarProducto(parametro) {
+    return `<div class="${parametro.clase}">
+                <img src="${parametro.imagen}" alt="${parametro.titulo}" id="${parametro.clase}">
+                <h5>${parametro.titulo}</h5>
+                <span>${parametro.precio}</span>
+                </div>`
+}
+
+
+function refrescarLista() {
+    let contenido = ''
+    productos.forEach(function(producto) {
+      contenido += dibujarProducto(producto)
+    })
+    contenedor.innerHTML = contenido
+}
+
+// Filtrar Producto
+
+addEventListener('change', function () {
+    
+    const seleccion = document.querySelector('#seleccion')
+    const valorSelecct = seleccion.value
+    var celular = document.querySelectorAll('.celulares');
+    var saco = document.querySelectorAll('.ropa');
+    var pc = document.querySelectorAll('.computadora');
+
+    switch (valorSelecct.toLowerCase()) {
+        case 'celulares':
             for (let i = 0; i < celular.length; i++) {
                 let element = celular[i]
                 element.style.display = 'inline';
@@ -63,34 +151,33 @@
             }
             break;
         default:
-            alert('Por favor eliga una opción')
             break;
-    } 
-}
+    }
+    refrescarLista()
+})
 
-const contenedor = document.querySelector('#container')
-const selector = document.querySelector('#ordenar')
+// Ordenado de productos
 
-selector.addEventListener('change', function () {
-    const valorSeleccionado = selector.value
+select.addEventListener('change', function () {
+    const valorSeleccionado = select.value
     console.log(valorSeleccionado)
     
     // Primer caso cuando la persona selecciona Celulares
     switch (valorSeleccionado) {
         case 'celular':
-            const celulares = document.querySelectorAll('#celular')
+            const celulares = document.querySelectorAll('.celulares')
             celulares.forEach(function (celular) {
                 contenedor.insertBefore(celular, contenedor.firstChild)
             });
             break;
         case 'computador':
-            const computadoras = document.querySelectorAll('#computadora')
+            const computadoras = document.querySelectorAll('.computadora')
             computadoras.forEach(function (computador) {
                 contenedor.insertBefore(computador, contenedor.firstChild)
             });
             break;
         case 'ropa':
-            const prendas = document.querySelectorAll('#ropa')
+            const prendas = document.querySelectorAll('.ropa')
             prendas.forEach(function (prenda) {
                 contenedor.insertBefore(prenda, contenedor.firstChild)
             });
@@ -98,96 +185,62 @@ selector.addEventListener('change', function () {
         default:
             break;
     }
-})*/
+    refrescarLista()
+})
 
-//----Va a pintar lista de elementos
+// Mostrar de Mayor a Menor
 
-//Celulares
 
-var productos = [
-    {
-        imagen: 'img/celular.jpg',
-        titulo: 'Xiaomi Mi',
-        clase: 'celulares',
-        precio: '$ 1.500.000'
-    },
-    {
-        imagen: 'img/pantalon.jpg',
-        titulo: 'Levis',
-        clase: 'ropa',
-        precio: '$ 80.000'
-    },
-    {
-        imagen: 'img/celular.jpg',
-        titulo: 'Iphone X',
-        clase: 'celulares',
-        precio: '$ 3.450.000'
-    },
-    {
-        imagen: 'img/celular.jpg',
-        titulo: 'Huawei P30',
-        clase: 'celulares',
-        precio: '$ 2.000.000'
-    },
-    {
-        imagen: 'img/pantalon.jpg',
-        titulo: 'Calvin Klein',
-        clase: 'ropa',
-        precio: '$ 90.000'
-    },
-    {
-        imagen: 'img/pantalon.jpg',
-        titulo: 'Calvin Klein',
-        clase: 'ropa',
-        precio: '$ 90.000'
-    },
-    {
-        imagen: 'img/celular.jpg',
-        titulo: 'Moto G4',
-        clase: 'celulares',
-        precio: '$ 650.000'
-    },
-    {
-        imagen: 'img/pantalon.jpg',
-        titulo: 'Levis',
-        clase: 'ropa',
-        precio: '$ 80.000'
+addEventListener('change', function (event) {
+    const valorSeleccionado = opcion.value
+    let comparador
+
+    switch (valorSeleccionado) {
+        case 'MenorAMayor':
+            comparador = function (obj1, obj2) {
+                if (obj1.precio > obj2.precio) {
+                    return -1
+                }else{
+                    return 1
+                }
+            }
+            break;
+        case 'MayorAMenor':    
+            comparador = function (obj1, obj2) {
+                if (obj1.precio > obj2.precio) {
+                    return 1
+                }else{
+                    return -1
+                }
+            }
+            break;
+        case 'Az':    
+            comparador = function (obj1, obj2) {
+                if (obj1.titulo > obj2.titulo) {
+                    return 1
+                }else{
+                    return -1
+                }
+            }
+            break;
+        case 'Za':    
+            comparador = function (obj1, obj2) {
+                if (obj1.titulo > obj2.titulo) {
+                    return -1
+                }else{
+                    return 1
+                }
+            }
+            break;
+        default:
+            comparador = function (obj1, obj2) {
+                return 0
+            }
+            break;
     }
-]
-
-const contenedor = document.querySelector('#container')
-
-let contenido
-
-function refrescarLista() {
-    
-}
-
-function dibujarProducto(elemento) {
-    return `<div class="celular">
-                <img src="${producto.imagen}" alt="${producto.titulo}" id="${producto.clase}">
-                <h5>${producto.titulo}</h5>
-                <span>${producto.precio}</span>
-            </div> `
-}
+    productos = productos.sort(comparador)
+    console.log(productos)
+    refrescarLista()
+})
 
 refrescarLista()
-
-/*
-celulares.forEach(function (celular) {
-    contenido += `<div class="celular">
-                    <img src="${celular.imagen}" alt="${celular.titulo}" id="${celular.clase}">
-                    <h5>${celular.titulo}</h5>
-                    <span>${celular.precio}</span>
-                  </div> `
-})
-*/ 
-
-/*
-productos.sort(function(obj1, obj2){
-if(obj1.precio < obj2.precio){
-     return 1   
- }else{
-    return -1
-}
-*/
