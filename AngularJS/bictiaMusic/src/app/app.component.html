@@ -1,0 +1,20 @@
+<app-saludo></app-saludo>
+
+<p>Contenido</p>
+
+<p> {{ name }} </p>
+
+<input type="text" [(ngModel)]="name">
+
+<div *ngIf=" name !== 'Sneider'.toLowerCase(); else elseBlock ">
+    Hola {{ name }}
+</div>
+<ng-template #elseBlock> Hola Sneider </ng-template>
+
+<ul>
+    <div *ngFor="let n of names">
+        <li *ngIf=" n !== 'Mayerli' ">
+            {{ n }}
+        </li>
+    </div>
+</ul>

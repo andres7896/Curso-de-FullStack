@@ -1,0 +1,1092 @@
+Proceso de simplficación de datos
+
+OBJETIVOS
+
+1 - Primera         2 - Segunda         3 - Tercera
+
+Ejemplo:
+
+
+Setting environment for using XAMPP for Windows.
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.11-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| colegio            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.149 sec)
+
+MariaDB [(none)]> use colegio
+Database changed
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]> show tables;
++-------------------+
+| Tables_in_colegio |
++-------------------+
+| estudiantes       |
+| materias          |
+| salones           |
+| sedes             |
++-------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [colegio]> DESC estudiantes
+    -> ;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nombre   | varchar(45) | NO   |     | NULL    |                |
+| apellido | varchar(45) | NO   |     | NULL    |                |
+| celular  | varchar(20) | NO   |     | NULL    |                |
+| idSede   | int(11)     | NO   | MUL | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.229 sec)
+
+MariaDB [colegio]> CREATE TABLE EstudianteSalon(
+    -> iEstudiante INT NOT NULL,
+    -> idst;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 3
+MariaDB [colegio]> CREATE TABLE EstudianteSalon(
+    -> idEstudiante INT NOT NULL,
+    -> idSalon INT NOT NULL,
+    -> FOREIGN KEY (idEstudiante) REFERENCES estudiantes(id),
+    -> FOREIGN KEY (idSalon) REFERENCES Salones(id)
+    -> );
+Query OK, 0 rows affected (0.563 sec)
+
+MariaDB [colegio]> DESC EstudianteSalon
+    -> ;
++--------------+---------+------+-----+---------+-------+
+| Field        | Type    | Null | Key | Default | Extra |
++--------------+---------+------+-----+---------+-------+
+| idEstudiante | int(11) | NO   | MUL | NULL    |       |
+| idSalon      | int(11) | NO   | MUL | NULL    |       |
++--------------+---------+------+-----+---------+-------+
+2 rows in set (0.031 sec)
+
+MariaDB [colegio]> CREATE TABLE EstudiantesMaterias(
+    -> idEstudiante INT NOT NULL,
+    -> idMateria INT NOT NULL,
+    -> FOREING KEY (idEstudiante) REFERENCES estudiantes(id),
+    -> FOREING KEY (idMateria) REFERENCES materias(id)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'KEY (idEstudiante) REFERENCES estudiantes(id),
+FOREING KEY (idMateria) REFERENCE' at line 4
+MariaDB [colegio]> CREATE TABLE EstudiantesMaterias(
+    -> idEstudiante INT NOT NULL,
+    -> idMateria INT NOT NULL,
+    -> FOREING KEY (idEstudiante) REFERENCES estudiantes(id),
+    -> FOREING KEY (idMateria) REFERENCES materias(id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'KEY (idEstudiante) REFERENCES estudiantes(id),
+FOREING KEY (idMateria) REFERENCE' at line 4
+MariaDB [colegio]> DESC materias
+    -> ;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nombreMateria | varchar(45) | NO   |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.112 sec)
+
+MariaDB [colegio]> CREATE TABLE EstudiantesMaterias(
+    -> idEstudiante INT NOT NULL,
+    -> idMateria INT NOT NULL,
+    -> FOREING KEY (idEstudiante) REFERENCES estudiantes(id),
+    -> FOREING KEY (idMateria) REFERENCES materias(id)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'KEY (idEstudiante) REFERENCES estudiantes(id),
+FOREING KEY (idMateria) REFERENCE' at line 4
+MariaDB [colegio]> CREATE TABLE EstudiantesMaterias(
+    -> idEstudiante INT NOT NULL,
+    -> idMateria INT NOT NULL,
+    -> FOREING KEY (idEstudiante) REFERENCES estudiantes(id),
+    -> FOREING KEY (idMateria) REFERENCES materias(id)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'KEY (idEstudiante) REFERENCES estudiantes(id),
+FOREING KEY (idMateria) REFERENCE' at line 4
+MariaDB [colegio]> CREATE TABLE EstudiantesMaterias(
+    -> FOREING KEY (idEstudiantes) REFERENCES estudiantes(id),
+    -> FOREING KEY (idMateria) REFERENCES materias(id),;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'KEY (idEstudiantes) REFERENCES estudiantes(id),
+FOREING KEY (idMateria) REFERENC' at line 2
+MariaDB [colegio]> CREATE TABLE EstudiantesMaterias(
+    -> idEstudiante INT NOT NULL,
+    -> idMateria INT NOT NULL,;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 3
+MariaDB [colegio]> CREATE TABLE EstudiantesMaterias(
+    -> idEstudiantes INT NOT NULL,
+    -> idMateria INT NOT NULL,
+    -> FOREING KEY (idEstudiantes) REFERENCES estudiantes(id),
+    -> FOREING KEY (idMateria) REFERENCES materias(id)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'KEY (idEstudiantes) REFERENCES estudiantes(id),
+FOREING KEY (idMateria) REFERENC' at line 4
+MariaDB [colegio]> DESC estudiantes
+    -> ;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nombre   | varchar(45) | NO   |     | NULL    |                |
+| apellido | varchar(45) | NO   |     | NULL    |                |
+| celular  | varchar(20) | NO   |     | NULL    |                |
+| idSede   | int(11)     | NO   | MUL | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.071 sec)
+
+MariaDB [colegio]> DESC materias;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nombreMateria | varchar(45) | NO   |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.101 sec)
+
+MariaDB [colegio]> CREATE TABLE EstudiantesMaterias(
+    -> idEstudiantes INT NOT NULL,
+    -> idMateria INT NOT NULL,
+    -> FOREING KEY (idEstudiantes) REFERENCES estudiantes(id),
+    -> FOREIGN KEY (idMateria) REFERENCES materias(id))
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'KEY (idEstudiantes) REFERENCES estudiantes(id),
+FOREIGN KEY (idMateria) REFERENC' at line 4
+MariaDB [colegio]> CREATE TABLE EstudiantesMaterias(
+    -> idEstudiantes INT NOT NULL,
+    -> idMateria INT NOT NULL,
+    -> FOREIGN KEY (idEstudiantes) REFERENCES estudiantes(id),
+    -> FOREIGN KEY (idMateria) REFERENCES materias(id));
+Query OK, 0 rows affected (0.317 sec)
+
+MariaDB [colegio]> exit
+Bye
+
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# mysql -u root -p abcd
+Enter password:
+ERROR 1049 (42000): Unknown database 'abcd'
+
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# mysql -u root -p
+Enter password: ****
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# mysql -u root -p
+Enter password: ****
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# mysql -u root -p
+Enter password: ****
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# mysql -u root -p
+Enter password: ****
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.11-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> desc salones
+    -> ;
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    8
+Current database: *** NONE ***
+
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use colegio
+Database changed
+MariaDB [colegio]> desc salones;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| id      | int(11)     | NO   | PRI | NULL    | auto_increment |
+| salon   | varchar(30) | NO   |     | NULL    |                |
+| idSalon | int(11)     | NO   | MUL | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+3 rows in set (0.064 sec)
+
+MariaDB [colegio]> desc estudiantes;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nombre   | varchar(45) | NO   |     | NULL    |                |
+| apellido | varchar(45) | NO   |     | NULL    |                |
+| celular  | varchar(20) | NO   |     | NULL    |                |
+| idSede   | int(11)     | NO   | MUL | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.173 sec)
+
+MariaDB [colegio]> desc EstudiantesSalones;
+ERROR 1146 (42S02): Table 'colegio.estudiantessalones' doesn't exist
+MariaDB [colegio]> desc EstudiantesSalon;
+ERROR 1146 (42S02): Table 'colegio.estudiantessalon' doesn't exist
+MariaDB [colegio]> show tables
+    -> ;
++---------------------+
+| Tables_in_colegio   |
++---------------------+
+| estudiantes         |
+| estudiantesalon     |
+| estudiantesmaterias |
+| materias            |
+| salones             |
+| sedes               |
++---------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [colegio]> desc estudiantesalon;
++--------------+---------+------+-----+---------+-------+
+| Field        | Type    | Null | Key | Default | Extra |
++--------------+---------+------+-----+---------+-------+
+| idEstudiante | int(11) | NO   | MUL | NULL    |       |
+| idSalon      | int(11) | NO   | MUL | NULL    |       |
++--------------+---------+------+-----+---------+-------+
+2 rows in set (0.103 sec)
+
+MariaDB [colegio]> show databases();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '()' at line 1
+MariaDB [colegio]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| colegio            |
+| colegios           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.011 sec)
+
+MariaDB [colegio]> use colegios
+Database changed
+MariaDB [colegios]> show table
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [colegios]> show tables;
++--------------------+
+| Tables_in_colegios |
++--------------------+
+| estudiantematerias |
+| estudiantes        |
+| estudiantesalon    |
+| materias           |
+| salones            |
+| sedes              |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [colegios]> DROP DATABASE colegio;
+Query OK, 6 rows affected (1.522 sec)
+
+MariaDB [colegios]> mysql -u root -p --database=testColegios2 < C:\Users\SNEIDER\Downloads\CURSO FULLSTACK\Bases_de_Datos\db_colegio.sql
+ERROR: Unknown command '\U'.
+ERROR: Unknown command '\S'.
+ERROR: Unknown command '\D'.
+mysql: Character set 'URSO' is not a compiled character set and is not specified in the 'C:\Program Files\MariaDB 10.4\share\charsets\Index.xml' file
+Charset is not found
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysql -u root -p --database=testColegios2 < C:\Users\SNEIDER\Downloads' at line 1
+MariaDB [colegios]> mysql -u root -p --database=testColegios2 < db_colegio.sql
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysql -u root -p --database=testColegios2 < db_colegio.sql' at line 1
+MariaDB [colegios]> mysql -u root -p --database=testColegios2 < Downloads/db_colegio.sql;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysql -u root -p --database=testColegios2 < Downloads/db_colegio.sql' at line 1
+MariaDB [colegios]> mysql -u root -p --database=testColegios2 < C:/Users/SNEIDER/Downloads/CURSO FULLSTACK/Bases_de_Datos/db_colegio.sql;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysql -u root -p --database=testColegios2 < C:/Users/SNEIDER/Downloads/CURSO FUL' at line 1
+MariaDB [colegios]> mysql -u root -p --database=testColegios2 < C:/Users/SNEIDER/Downloads/CURSO FULLSTACK/Bases_de_Datos/db_colegio.sql;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysql -u root -p --database=testColegios2 < C:/Users/SNEIDER/Downloads/CURSO FUL' at line 1
+MariaDB [colegios]> pwd
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'pwd' at line 1
+MariaDB [colegios]> cd Downloads
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'cd Downloads' at line 1
+MariaDB [colegios]> CREATE DATABASE testColegio2;
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [colegios]> mysql -u root -p --database=testColegio2 < C:Bye_colegio.sql;
+
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# cd ..
+
+SNEIDER@DESKTOP-O3NIKS2 c:\
+# mysql -u root -p --database=testColegio2 < db_colegio.sql
+Enter password:
+
+SNEIDER@DESKTOP-O3NIKS2 c:\
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.4.11-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show database
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| colegios           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| testcolegio2       |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> use testColegio2
+Database changed
+MariaDB [testColegio2]> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [testColegio2]> show tables;
++------------------------+
+| Tables_in_testcolegio2 |
++------------------------+
+| estudiantes            |
+| estudiantesalon        |
+| estudiantesmaterias    |
+| materias               |
+| salones                |
+| sedes                  |
++------------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [testColegio2]> mysqldump -u root -p testColegios2 > Desktop/db_colegios.sql
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysqldump -u root -p testColegios2 > Desktop/db_colegios.sql' at line 1
+MariaDB [testColegio2]> exit
+Bye
+
+SNEIDER@DESKTOP-O3NIKS2 c:\
+# mysqldump -u root -p testColegios2 > Desktop/db_colegios.sql
+El sistema no puede encontrar la ruta especificada.
+
+SNEIDER@DESKTOP-O3NIKS2 c:\
+# mysqldump -u root -p testColegios2 > db_colegios.sql
+Acceso denegado.
+
+SNEIDER@DESKTOP-O3NIKS2 c:\
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 11
+Server version: 10.4.11-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use testColegio2
+Database changed
+MariaDB [testColegio2]> select * from estudiantes;
++----+---------+----------+---------+--------+---------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    |
++----+---------+----------+---------+--------+---------------------+
+|  1 | Paula   | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |
++----+---------+----------+---------+--------+---------------------+
+3 rows in set (0.056 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE nombre LIKE '%e%';
++----+---------+----------+---------+--------+---------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    |
++----+---------+----------+---------+--------+---------------------+
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |
++----+---------+----------+---------+--------+---------------------+
+2 rows in set (0.076 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE nombre LIKE '%e';
+Empty set (0.001 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE nombre LIKE 'e%';
+Empty set (0.042 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE nombre LIKE '%u%';
++----+--------+----------+---------+--------+---------------------+
+| id | nombre | apellido | celular | idSede | fecha_nacimiento    |
++----+--------+----------+---------+--------+---------------------+
+|  1 | Paula  | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |
++----+--------+----------+---------+--------+---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE nombre LIKE '%Ne%';
++----+--------+----------+---------+--------+---------------------+
+| id | nombre | apellido | celular | idSede | fecha_nacimiento    |
++----+--------+----------+---------+--------+---------------------+
+|  2 | Nestor | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |
++----+--------+----------+---------+--------+---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE nombre LIKE '%es%';
++----+--------+----------+---------+--------+---------------------+
+| id | nombre | apellido | celular | idSede | fecha_nacimiento    |
++----+--------+----------+---------+--------+---------------------+
+|  2 | Nestor | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |
++----+--------+----------+---------+--------+---------------------+
+1 row in set (0.002 sec)
+
+MariaDB [testColegio2]> clear
+MariaDB [testColegio2]> clean
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'clean' at line 1
+MariaDB [testColegio2]> clear;
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]>
+MariaDB [testColegio2]> SELECT * FROM Estudiantes;
++----+---------+----------+---------+--------+---------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    |
++----+---------+----------+---------+--------+---------------------+
+|  1 | Paula   | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |
++----+---------+----------+---------+--------+---------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE nombre like 'Pa%' LIMIT 1;
++----+--------+----------+---------+--------+---------------------+
+| id | nombre | apellido | celular | idSede | fecha_nacimiento    |
++----+--------+----------+---------+--------+---------------------+
+|  1 | Paula  | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |
++----+--------+----------+---------+--------+---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE nombre like 'Pa%' LIMIT 10;
++----+--------+----------+---------+--------+---------------------+
+| id | nombre | apellido | celular | idSede | fecha_nacimiento    |
++----+--------+----------+---------+--------+---------------------+
+|  1 | Paula  | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |
++----+--------+----------+---------+--------+---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE fecha BETWEEN '1990-01-31' AND '1999-12-31';
+ERROR 1054 (42S22): Unknown column 'fecha' in 'where clause'
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE fecha_nacimiento BETWEEN '1990-01-31' AND '1999-12-31';
++----+---------+----------+---------+--------+---------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    |
++----+---------+----------+---------+--------+---------------------+
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |
++----+---------+----------+---------+--------+---------------------+
+2 rows in set (0.058 sec)
+
+MariaDB [testColegio2]> SELECT COUNT (id) * FROM Estudiantes WHERE fecha_nacimiento BETWEEN '1990-01-31' AND '1999-12-31';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM Estudiantes WHERE fecha_nacimiento BETWEEN '1990-01-31' AND '1999-12-31'' at line 1
+MariaDB [testColegio2]> SELECT COUNT (id) FROM Estudiantes WHERE fecha_nacimiento BETWEEN '1990-01-31' AND '1999-12-31';
+ERROR 1630 (42000): FUNCTION testcolegio2.COUNT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+MariaDB [testColegio2]> SELECT COUNT(id) FROM Estudiantes WHERE fecha_nacimiento BETWEEN '1990-01-31' AND '1999-12-31';
++-----------+
+| COUNT(id) |
++-----------+
+|         2 |
++-----------+
+1 row in set (0.065 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes WHERE celular LIKE '%23%'
+    -> ;
++----+---------+----------+---------+--------+---------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    |
++----+---------+----------+---------+--------+---------------------+
+|  1 | Paula   | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |
++----+---------+----------+---------+--------+---------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [testColegio2]> SELECT * FROM Estudiantes AS es INNER JOIN Sedes AS s ON es.idSede = id_sede;
++----+---------+----------+---------+--------+---------------------+---------+-------------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    | id_sede | nombre                  |
++----+---------+----------+---------+--------+---------------------+---------+-------------------------+
+|  1 | Paula   | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |       1 | CAFAM Floresta - Sede A |
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |       2 | CAFAM Floresta - Sede B |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |       2 | CAFAM Floresta - Sede B |
++----+---------+----------+---------+--------+---------------------+---------+-------------------------+
+3 rows in set (0.110 sec)
+
+MariaDB [testColegio2]> SELECT es.nombre, es.apellido, s.nombre FROM Estudiantes AS es INNER JOIN Sedes AS s ON es.idSede = id_sede;
++---------+----------+-------------------------+
+| nombre  | apellido | nombre                  |
++---------+----------+-------------------------+
+| Paula   | Morales  | CAFAM Floresta - Sede A |
+| Nestor  | Guzman   | CAFAM Floresta - Sede B |
+| Redvers | Escobar  | CAFAM Floresta - Sede B |
++---------+----------+-------------------------+
+3 rows in set (0.002 sec)
+
+MariaDB [testColegio2]> SELECT es.nombre, es.apellido, s.nombre FROM Estudiantes AS es INNER JOIN Sedes AS s ON es.idSede = id_sede WHERE s.id_sede = 2;
++---------+----------+-------------------------+
+| nombre  | apellido | nombre                  |
++---------+----------+-------------------------+
+| Nestor  | Guzman   | CAFAM Floresta - Sede B |
+| Redvers | Escobar  | CAFAM Floresta - Sede B |
++---------+----------+-------------------------+
+2 rows in set (0.051 sec)
+
+MariaDB [testColegio2]> SELECT es.nombre, es.apellido, s.nombre FROM Estudiantes AS es INNER JOIN Sedes AS s ON es.idSede = id_sede WHERE id_sede = 2;
++---------+----------+-------------------------+
+| nombre  | apellido | nombre                  |
++---------+----------+-------------------------+
+| Nestor  | Guzman   | CAFAM Floresta - Sede B |
+| Redvers | Escobar  | CAFAM Floresta - Sede B |
++---------+----------+-------------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [testColegio2]>
+
+UPDATE tabla SET campo = '...' WHERE campo = '....' o condicion;
+DELETE FROM tabla WHERE condicion;
+
+
+
+/*------------------------------------------------
+Setting environment for using XAMPP for Windows.
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 103
+Server version: 10.4.11-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| colegio            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> use colegio
+Database changed
+MariaDB [colegio]> show tables;
++---------------------+
+| Tables_in_colegio   |
++---------------------+
+| estudiantes         |
+| estudiantesalon     |
+| estudiantesmaterias |
+| materias            |
+| salones             |
+| sedes               |
++---------------------+
+6 rows in set (0.000 sec)
+
+MariaDB [colegio]> SELECT * FROM sedes;
++---------+-------------------------+
+| id_sede | nombre                  |
++---------+-------------------------+
+|       1 | CAFAM Floresta - Sede A |
+|       2 | CAFAM Floresta - Sede B |
++---------+-------------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [colegio]> INSERT INTO  sedes (nombre) VALUES ('Otra sede.');
+Query OK, 1 row affected (0.065 sec)
+
+MariaDB [colegio]> SELECT * FROM sedes;
++---------+-------------------------+
+| id_sede | nombre                  |
++---------+-------------------------+
+|       1 | CAFAM Floresta - Sede A |
+|       2 | CAFAM Floresta - Sede B |
+|       3 | Otra sede.              |
++---------+-------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT * FROM estudiantes GROUP BY (idSede)
+    -> ;
++----+--------+----------+---------+--------+---------------------+
+| id | nombre | apellido | celular | idSede | fecha_nacimiento    |
++----+--------+----------+---------+--------+---------------------+
+|  1 | Paula  | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |
+|  2 | Nestor | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |
++----+--------+----------+---------+--------+---------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT * FROM estudiantes INNER JOIN sedes ON id_sedes = idSedes GROUP BY (idSede);
+ERROR 1054 (42S22): Unknown column 'id_sedes' in 'on clause'
+MariaDB [colegio]> SELECT * FROM estudiantes INNER JOIN sedes ON id_sedes = idSedes;
+ERROR 1054 (42S22): Unknown column 'id_sedes' in 'on clause'
+MariaDB [colegio]> SELECT * FROM estudiantes INNER JOIN Sedes ON id_sede = idSede;
++----+---------+----------+---------+--------+---------------------+---------+-------------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    | id_sede | nombre                  |
++----+---------+----------+---------+--------+---------------------+---------+-------------------------+
+|  1 | Paula   | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |       1 | CAFAM Floresta - Sede A |
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |       2 | CAFAM Floresta - Sede B |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |       2 | CAFAM Floresta - Sede B |
++----+---------+----------+---------+--------+---------------------+---------+-------------------------+
+3 rows in set (0.379 sec)
+
+MariaDB [colegio]> SELECT * FROM Sedes.nombre estudiantes INNER JOIN Sedes ON id_sede = idSede;
+ERROR 1146 (42S02): Table 'sedes.nombre' doesn't exist
+MariaDB [colegio]> SELECT * FROM Sedes.nombre INNER JOIN Sedes ON id_sede = idSede GROUP BY (id_sede);
+ERROR 1146 (42S02): Table 'sedes.nombre' doesn't exist
+MariaDB [colegio]> SELECT COUNT(Estudiantes.id), Sedes.nombre FROM Estudiantes INNER JOIN Sedes ON id_sede = idSede GROUP BY(id_sede);
++-----------------------+-------------------------+
+| COUNT(Estudiantes.id) | nombre                  |
++-----------------------+-------------------------+
+|                     1 | CAFAM Floresta - Sede A |
+|                     2 | CAFAM Floresta - Sede B |
++-----------------------+-------------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT COUNT(Estudiantes.id), Sedes.nombre FROM Estudiantes INNER JOIN Sedes ON id_sede = idSede GROUP BY(id_sede) HAVING  COUNT (Estudiantes.id) > 1;
+ERROR 1630 (42000): FUNCTION colegio.COUNT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+MariaDB [colegio]> SELECT COUNT(Estudiantes.id), Sedes.nombre FROM Estudiantes INNER JOIN Sedes ON id_sede = idSede GROUP BY(id_sede) HAVING COUNT(Estudiantes.id) > 1; 
++-----------------------+-------------------------+
+| COUNT(Estudiantes.id) | nombre                  |
++-----------------------+-------------------------+
+|                     2 | CAFAM Floresta - Sede B |
++-----------------------+-------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [colegio]> SELECT COUNT(Estudiantes.id), Sedes.nombre FROM Estudiantes INNER JOIN Sedes ON id_sede;
++-----------------------+-------------------------+
+| COUNT(Estudiantes.id) | nombre                  |
++-----------------------+-------------------------+
+|                     9 | CAFAM Floresta - Sede A |
++-----------------------+-------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [colegio]> SELECT Estudiantes.nombre, Sedes.nombre FROM Estudiantes INNER JOIN Sedes ON id_sede;
++---------+-------------------------+
+| nombre  | nombre                  |
++---------+-------------------------+
+| Paula   | CAFAM Floresta - Sede A |
+| Nestor  | CAFAM Floresta - Sede A |
+| Redvers | CAFAM Floresta - Sede A |
+| Paula   | CAFAM Floresta - Sede B |
+| Nestor  | CAFAM Floresta - Sede B |
+| Redvers | CAFAM Floresta - Sede B |
+| Paula   | Otra sede.              |
+| Nestor  | Otra sede.              |
+| Redvers | Otra sede.              |
++---------+-------------------------+
+9 rows in set (0.000 sec)
+
+MariaDB [colegio]> SELECT Estudiantes.nombre, Sedes.nombre FROM Estudiantes INNER JOIN Sedes ON id_sede = idSede;
++---------+-------------------------+
+| nombre  | nombre                  |
++---------+-------------------------+
+| Paula   | CAFAM Floresta - Sede A |
+| Nestor  | CAFAM Floresta - Sede B |
+| Redvers | CAFAM Floresta - Sede B |
++---------+-------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT Estudiantes.nombre, Sedes.nombre FROM Estudiantes RIGTH JOIN Sedes ON id_sede = idSede;
+ERROR 1054 (42S22): Unknown column 'Estudiantes.nombre' in 'field list'
+MariaDB [colegio]> SELECT Estudiantes.nombre, Sedes.nombre FROM Estudiantes RIGTH JOIN Sedes ON id_sede = idSede;
+ERROR 1054 (42S22): Unknown column 'Estudiantes.nombre' in 'field list'
+MariaDB [colegio]> SELECT Estudiantes.nombre, Sedes.nombre FROM Estudiantes RIGTH JOIN Sedes ON id_sede = idSede;
+ERROR 1054 (42S22): Unknown column 'Estudiantes.nombre' in 'field list'
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]> SELECT Estudiantes.nombre, Sedes.nombre FROM Estudiantes RIGTH JOIN Sedes ON id_sede = idSede ;
+ERROR 1054 (42S22): Unknown column 'Estudiantes.nombre' in 'field list'
+MariaDB [colegio]> SELECT Estudiantes.nombre, Sedes.nombre FROM Estudiantes RIGTH JOIN Sedes ON id_sede = idSede ;
+ERROR 1054 (42S22): Unknown column 'Estudiantes.nombre' in 'field list'
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]> SHOW TABLES;
++---------------------+
+| Tables_in_colegio   |
++---------------------+
+| estudiantes         |
+| estudiantesalon     |
+| estudiantesmaterias |
+| materias            |
+| salones             |
+| sedes               |
++---------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT Estudiantes.nombre, Sedes.nombre FROM Estudiantes RIGHT JOIN Sedes ON id_sede = idSede ;
++---------+-------------------------+
+| nombre  | nombre                  |
++---------+-------------------------+
+| Paula   | CAFAM Floresta - Sede A |
+| Nestor  | CAFAM Floresta - Sede B |
+| Redvers | CAFAM Floresta - Sede B |
+| NULL    | Otra sede.              |
++---------+-------------------------+
+4 rows in set (0.044 sec)
+
+MariaDB [colegio]> SELECT * FROM Estudiantes;
++----+---------+----------+---------+--------+---------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    |
++----+---------+----------+---------+--------+---------------------+
+|  1 | Paula   | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |
++----+---------+----------+---------+--------+---------------------+
+3 rows in set (0.000 sec)
+
+MariaDB [colegio]> SELECT * FROM Estudiantes WHERE idSede = 2 AND nombre = 'Redvers';
++----+---------+----------+---------+--------+---------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    |
++----+---------+----------+---------+--------+---------------------+
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |
++----+---------+----------+---------+--------+---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [colegio]> SELECT * FROM Estudiantes WHERE idSede = 2 OR nombre = 'Redvers';
++----+---------+----------+---------+--------+---------------------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    |
++----+---------+----------+---------+--------+---------------------+
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |
++----+---------+----------+---------+--------+---------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT * FROM EstudianteSalon;
+Empty set (0.001 sec)
+
+MariaDB [colegio]> DESC EstudianteSalon;
++--------------+---------+------+-----+---------+-------+
+| Field        | Type    | Null | Key | Default | Extra |
++--------------+---------+------+-----+---------+-------+
+| idEstudiante | int(11) | NO   | MUL | NULL    |       |
+| idSalon      | int(11) | NO   | MUL | NULL    |       |
++--------------+---------+------+-----+---------+-------+
+2 rows in set (0.447 sec)
+
+MariaDB [colegio]> SELECT * FROM Salon;
+ERROR 1146 (42S02): Table 'colegio.salon' doesn't exist
+MariaDB [colegio]> SELECT * FROM Salones;
++----------+--------------+--------+
+| id_salon | nombre       | idSede |
++----------+--------------+--------+
+|        1 | Atenea       |      1 |
+|        2 | Poseidon     |      1 |
+|        3 | Afrodita     |      2 |
+|        4 | Zeus         |      1 |
+|        5 | MinutoDeDios |      1 |
++----------+--------------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [colegio]> INSERT INTO EstudiantesSalon (idEstudiante, idSalon) VALUES (Estudiantes.id, Salon.id_salon);
+ERROR 1146 (42S02): Table 'colegio.estudiantessalon' doesn't exist
+MariaDB [colegio]> INSERT INTO EstudianteSalon (idEstudiante, idSalon) VALUES (Estudiantes.id, Salon.id_salon);
+ERROR 1054 (42S22): Unknown column 'Estudiantes.id' in 'field list'
+MariaDB [colegio]> INSERT INTO EstudianteSalon (idEstudiante, idSalon) VALUES ((SELECT id FROM Estudiantes WHERE nombre LIKE '%Paula%'), (SELECT id_sede FROM Salon WHERE nombre = 'Zeus'));
+ERROR 1146 (42S02): Table 'colegio.salon' doesn't exist
+MariaDB [colegio]> INSERT INTO EstudianteSalon (idEstudiante, idSalon) VALUES ((SELECT id FROM Estudiantes WHERE nombre LIKE '%Paula%'), (SELECT id_sede FROM Salones WHERE nombre = 'Zeus'));
+ERROR 1054 (42S22): Unknown column 'id_sede' in 'field list'
+MariaDB [colegio]> INSERT INTO EstudianteSalon (idEstudiante, idSalon) VALUES ((SELECT id FROM Estudiantes WHERE nombre LIKE '%Paula%'), (SELECT id_salon FROM Salones WHERE nombre = 'Zeus'));
+Query OK, 1 row affected (0.056 sec)
+
+MariaDB [colegio]> DESC EstudianteSalon;
++--------------+---------+------+-----+---------+-------+
+| Field        | Type    | Null | Key | Default | Extra |
++--------------+---------+------+-----+---------+-------+
+| idEstudiante | int(11) | NO   | MUL | NULL    |       |
+| idSalon      | int(11) | NO   | MUL | NULL    |       |
++--------------+---------+------+-----+---------+-------+
+2 rows in set (0.019 sec)
+
+MariaDB [colegio]> SELECT * FROM EstudianteSalon;
++--------------+---------+
+| idEstudiante | idSalon |
++--------------+---------+
+|            1 |       4 |
++--------------+---------+
+1 row in set (0.001 sec)
+
+MariaDB [colegio]> ALTER TABLE Estudiantes ADD COLUMN edad INT NOT NULL;
+Query OK, 0 rows affected (0.200 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [colegio]> SELECT * FROM Estudiantes;
++----+---------+----------+---------+--------+---------------------+------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    | edad |
++----+---------+----------+---------+--------+---------------------+------+
+|  1 | Paula   | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |    0 |
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |    0 |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |    0 |
++----+---------+----------+---------+--------+---------------------+------+
+3 rows in set (0.001 sec)
+
+MariaDB [colegio]> INSERT INTO Estudiantes(edad) VALUES(27) WHERE id = 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id = 1' at line 1
+MariaDB [colegio]> UPDATE Estudiantes SET edad = 22 WHERE id = 1;
+Query OK, 1 row affected (0.065 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [colegio]> UPDATE Estudiantes SET edad = 20 WHERE id = 3;
+Query OK, 1 row affected (0.063 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [colegio]> UPDATE Estudiantes SET edad = 30 WHERE id =2;
+Query OK, 1 row affected (0.070 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [colegio]> SELECT * FROM Estudiantes;
++----+---------+----------+---------+--------+---------------------+------+
+| id | nombre  | apellido | celular | idSede | fecha_nacimiento    | edad |
++----+---------+----------+---------+--------+---------------------+------+
+|  1 | Paula   | Morales  | 123456  |      1 | 2000-01-20 00:00:00 |   22 |
+|  2 | Nestor  | Guzman   | 89045   |      2 | 1994-01-20 00:00:00 |   30 |
+|  3 | Redvers | Escobar  | 1234567 |      2 | 1993-06-27 00:00:00 |   20 |
++----+---------+----------+---------+--------+---------------------+------+
+3 rows in set (0.001 sec)
+
+
+
+
+
+Setting environment for using XAMPP for Windows.
+SNEIDER@DESKTOP-O3NIKS2 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 126
+Server version: 10.4.11-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SELECT * FROM salones;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use colegio;
+Database changed
+MariaDB [colegio]> SELECT * FROM salones;
++----------+--------------+--------+
+| id_salon | nombre       | idSede |
++----------+--------------+--------+
+|        1 | Atenea       |      1 |
+|        2 | Poseidon     |      1 |
+|        3 | Afrodita     |      2 |
+|        4 | Zeus         |      1 |
+|        5 | MinutoDeDios |      1 |
++----------+--------------+--------+
+5 rows in set (0.000 sec)
+
+MariaDB [colegio]> SELECT * FROM Sedes;
++---------+-------------------------+
+| id_sede | nombre                  |
++---------+-------------------------+
+|       1 | CAFAM Floresta - Sede A |
+|       2 | CAFAM Floresta - Sede B |
+|       3 | Otra sede.              |
++---------+-------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [colegio]> INSERT INTO Sedes (nombre) VALUES ('Otra sede 2');
+Query OK, 1 row affected (0.194 sec)
+
+MariaDB [colegio]> SELECT * FROM Sedes;
++---------+-------------------------+
+| id_sede | nombre                  |
++---------+-------------------------+
+|       1 | CAFAM Floresta - Sede A |
+|       2 | CAFAM Floresta - Sede B |
+|       3 | Otra sede.              |
+|       4 | Otra sede 2             |
++---------+-------------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT * FROM Salones INNER JOIN Sedes ON id_sede =  idSede;
++----------+--------------+--------+---------+-------------------------+
+| id_salon | nombre       | idSede | id_sede | nombre                  |
++----------+--------------+--------+---------+-------------------------+
+|        1 | Atenea       |      1 |       1 | CAFAM Floresta - Sede A |
+|        2 | Poseidon     |      1 |       1 | CAFAM Floresta - Sede A |
+|        3 | Afrodita     |      2 |       2 | CAFAM Floresta - Sede B |
+|        4 | Zeus         |      1 |       1 | CAFAM Floresta - Sede A |
+|        5 | MinutoDeDios |      1 |       1 | CAFAM Floresta - Sede A |
++----------+--------------+--------+---------+-------------------------+
+5 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT * FROM Salones INNER JOIN Sedes ON idSede = id_sede;
++----------+--------------+--------+---------+-------------------------+
+| id_salon | nombre       | idSede | id_sede | nombre                  |
++----------+--------------+--------+---------+-------------------------+
+|        1 | Atenea       |      1 |       1 | CAFAM Floresta - Sede A |
+|        2 | Poseidon     |      1 |       1 | CAFAM Floresta - Sede A |
+|        3 | Afrodita     |      2 |       2 | CAFAM Floresta - Sede B |
+|        4 | Zeus         |      1 |       1 | CAFAM Floresta - Sede A |
+|        5 | MinutoDeDios |      1 |       1 | CAFAM Floresta - Sede A |
++----------+--------------+--------+---------+-------------------------+
+5 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT * FROM Salones INNER JOIN Sedes ON Salones.idSede = Sedes.id_sede;
++----------+--------------+--------+---------+-------------------------+
+| id_salon | nombre       | idSede | id_sede | nombre                  |
++----------+--------------+--------+---------+-------------------------+
+|        1 | Atenea       |      1 |       1 | CAFAM Floresta - Sede A |
+|        2 | Poseidon     |      1 |       1 | CAFAM Floresta - Sede A |
+|        3 | Afrodita     |      2 |       2 | CAFAM Floresta - Sede B |
+|        4 | Zeus         |      1 |       1 | CAFAM Floresta - Sede A |
+|        5 | MinutoDeDios |      1 |       1 | CAFAM Floresta - Sede A |
++----------+--------------+--------+---------+-------------------------+
+5 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT * FROM Salones LEFT JOIN Sedes ON Salones.idSede = Sedes.id_sede;
++----------+--------------+--------+---------+-------------------------+
+| id_salon | nombre       | idSede | id_sede | nombre                  |
++----------+--------------+--------+---------+-------------------------+
+|        1 | Atenea       |      1 |       1 | CAFAM Floresta - Sede A |
+|        2 | Poseidon     |      1 |       1 | CAFAM Floresta - Sede A |
+|        3 | Afrodita     |      2 |       2 | CAFAM Floresta - Sede B |
+|        4 | Zeus         |      1 |       1 | CAFAM Floresta - Sede A |
+|        5 | MinutoDeDios |      1 |       1 | CAFAM Floresta - Sede A |
++----------+--------------+--------+---------+-------------------------+
+5 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT * FROM Salones RIGHT JOIN Sedes ON Salones.idSede = Sedes.id_sede;
++----------+--------------+--------+---------+-------------------------+
+| id_salon | nombre       | idSede | id_sede | nombre                  |
++----------+--------------+--------+---------+-------------------------+
+|        1 | Atenea       |      1 |       1 | CAFAM Floresta - Sede A |
+|        2 | Poseidon     |      1 |       1 | CAFAM Floresta - Sede A |
+|        3 | Afrodita     |      2 |       2 | CAFAM Floresta - Sede B |
+|        4 | Zeus         |      1 |       1 | CAFAM Floresta - Sede A |
+|        5 | MinutoDeDios |      1 |       1 | CAFAM Floresta - Sede A |
+|     NULL | NULL         |   NULL |       3 | Otra sede.              |
+|     NULL | NULL         |   NULL |       4 | Otra sede 2             |
++----------+--------------+--------+---------+-------------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]>
+MariaDB [colegio]> SELECT Salones.nombre, Sedes.nombre FROM Salones RIGHT JOIN Sedes ON Salones.idSede = Sedes.id_sede;
++--------------+-------------------------+
+| nombre       | nombre                  |
++--------------+-------------------------+
+| Atenea       | CAFAM Floresta - Sede A |
+| Poseidon     | CAFAM Floresta - Sede A |
+| Afrodita     | CAFAM Floresta - Sede B |
+| Zeus         | CAFAM Floresta - Sede A |
+| MinutoDeDios | CAFAM Floresta - Sede A |
+| NULL         | Otra sede.              |
+| NULL         | Otra sede 2             |
++--------------+-------------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [colegio]> SELECT CONT(Salones.nombre, Sedes.nombre) FROM Salones RIGHT JOIN Sedes ON Salones.idSede = Sedes.id_sede;
+ERROR 1305 (42000): FUNCTION colegio.CONT does not exist
+MariaDB [colegio]> SELECT CONT(Salones.nombre, '-', Sedes.nombre) FROM Salones RIGHT JOIN Sedes ON Salones.idSede = Sedes.id_sede;
+ERROR 1305 (42000): FUNCTION colegio.CONT does not exist
+MariaDB [colegio]> SELECT CONCAT(Salones.nombre, '-', Sedes.nombre) FROM Salones RIGHT JOIN Sedes ON Salones.idSede = Sedes.id_sede;
++-------------------------------------------+
+| CONCAT(Salones.nombre, '-', Sedes.nombre) |
++-------------------------------------------+
+| Atenea-CAFAM Floresta - Sede A            |
+| Poseidon-CAFAM Floresta - Sede A          |
+| Afrodita-CAFAM Floresta - Sede B          |
+| Zeus-CAFAM Floresta - Sede A              |
+| MinutoDeDios-CAFAM Floresta - Sede A      |
+| NULL                                      |
+| NULL                                      |
++-------------------------------------------+
+7 rows in set (0.000 sec)
+
+MariaDB [colegio]> SELECT CONCAT(Salones.nombre, '-', Sedes.nombre) FROM Salones RIGHT JOIN Sedes ON Salones.idSede = Sedes.id_sede;

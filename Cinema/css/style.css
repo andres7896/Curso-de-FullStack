@@ -1,0 +1,292 @@
+*, html{
+    margin: auto 0;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+}
+
+.header{
+    background-color: #191C59;
+    color: white;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+    padding: 15px;
+    display: flex;
+}
+
+.header h1{
+    margin-left: 30px;
+    margin-right: 50px;
+}
+
+.accesos{
+    width: 70%;
+}
+
+.accesos a{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    float: right;
+    font-size: 18px;
+}
+
+.acerca{
+    margin-right: 15px;
+}
+
+.btnlogin a{
+    background-color: #0442BF;
+    color: white;
+    margin-left: 20px;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.btnlogin a:hover{
+    background-color: rgb(68, 105, 216);
+}
+
+.slider {
+    padding-top: 20px;
+    width: 99%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.slider #estrenos {
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+.item{
+    height: 500px;
+}
+
+.slider #estrenos img{
+    width: 100%;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+.owl-stage-outer{
+    height: 500px;
+}
+
+.owl-dots{
+    margin-bottom: 15px;
+
+}
+
+h2{
+    margin-left: 40px;
+    margin-bottom: 15px;
+}
+
+hr{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.estrenos{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.estrenos img{
+    width: 300px;
+    height: 500px;
+    margin-bottom: 15px;
+}
+
+.estreno{
+    height: 600px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.estreno h3, h4{
+    margin-left: 15px;
+}
+
+.cartelera{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.cartelera img{
+    width: 300px;
+    height: 500px;
+    margin-bottom: 15px;
+}
+
+.carteleras{
+    background-color: brown;
+}
+
+.cartel{
+    height: 600px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.cartel h3, h4{
+    margin-left: 15px;
+}
+
+.proximos{
+    background-color: yellow;
+    padding: 5px;
+    text-align: left;
+    font-size: 18px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 0;
+    border-radius: 5px;
+}
+
+.proximos h2{
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+.carteleras{
+    background-color: yellow;
+    padding: 5px;
+    text-align: left;
+    font-size: 18px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.carteleras h2{
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+.contacto{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ADB0B2;
+    margin-left: 27px;
+    margin-right: 28px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.section1{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.section1 h2{
+    margin-left: 15px;
+}
+
+.section1 label{
+    margin-left: 15px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.section1 input{
+    margin-left: 15px;
+    border-radius: 5px;
+    border: 1px solid #ADB0B2;
+    height: 25px;
+    padding: 5px;
+    width: 250px;
+}
+
+.section2{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 35px;
+}
+
+.section2 h2{
+    margin-left: 15px;
+}
+
+.section2 label{
+    margin-left: 15px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.section2 input{
+    margin-left: 15px;
+    border-radius: 5px;
+    border: 1px solid #ADB0B2;
+    height: 25px;
+    padding: 5px;
+    width: 250px;
+}
+
+#message{
+    height: 130px;
+}
+
+.btnEnviar{
+    width: 150px;
+    background-color: yellow;
+    padding-bottom: 5px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+}
+
+.btnEnviar:hover{
+    background-color: rgb(247, 247, 27);
+}
+
+.redes{
+    height: 300px;
+}
+
+.redes img{
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    margin-left: 45px;
+}
+
+.redes h2{
+    margin-bottom: 45px;
+}
+
+footer{
+    margin: auto 0;
+    background-color: #191C59;
+    text-align: center;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    -webkit-box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+}

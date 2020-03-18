@@ -1,0 +1,127 @@
+{
+    nombre: 'Andres',
+    nonbre2: 'Sneider',
+    apellido: 'Garcia',
+    edad: 30,
+    mascotas: ['Tommy', 'Kaiser'],
+    favoritos: {
+        comida: 'pasta',
+        deporte: 'bicicross',
+        musica: 'Rock'
+    }
+}
+
+{
+    nombre: 'Carlos',
+    apellido: 'García',
+    edad: 50,
+    mascotas: ['Perro', 'Gato'],
+    favoritos: {
+        comida: 'Hamburguesa',
+        deporte: 'Ciclismo',
+        musica: 'Clásica'
+    }
+}
+
+{
+    nombre: 'Paula',
+    apellido: 'Morales',
+    edad: 21,
+    mascotas: ['Hamster', 'Canario'],
+    favoritos: {
+        comida: 'Hamburguesa',
+        deporte: 'Futbol',
+        musica: 'Pop'
+    }
+}
+
+{
+    nombre: 'Juian',
+    apellido: 'Perez',
+    edad: 26,
+    mascotas: ['Conejo', 'Cacatua'],
+    favoritos: {
+        comida: 'HotDo',
+        deporte: 'Rugby',
+        musica: 'Ranchera'
+    }
+}
+
+// Comandos
+
+use testMongo
+
+db.coleccion.insert({ Datos })
+
+db.users.insert({ name: 'Andres', lastname: 'Garcia' }) 
+
+db.users.find()
+
+db.users.find().pretty() 
+
+db.users.insertMany([ { name: 'Laura', lastname: 'Fernandez', }, { name: 'Carlos', lastname: 'Rodriguez'  } ]) 
+
+db.users.update( {_id: ObjectId("5e56793c23d6c70f6ca7c746") }, { $set: { age: 30 } } ) 
+
+db.users.remove( { _id: ObjectId("5e56780e23d6c70f6ca7c745")  } )
+
+db.users.remove( { lastname: 'Garcia' } ) 
+
+db.users.updateMany( {}, { $set: { email: 'paola@email.com'  } } )
+
+db.users.updateMany ( { }, { $unset: { names: '' } } ) 
+
+db.users.remove({})
+
+db.user.find({})
+
+db.restaurante.insertMany(
+    {
+        nombre: 'Criterion', 
+        direccion: 'Call 190', 
+        telefono: '45555', 
+        tipoComida: ['italiana', 'Arabe', 'Turca'], 
+        platos: [{nombre: 'Pasta a la Bolgñesa', precio: 35000}, {nombre: 'Lasagna', precio: 20000}, {nombre: 'Pizza', precio: 18000}, {nombre: 'Kebap', precio: 11000}, {nombre: 'Falafel', precio: 31000}, {nombre: 'Manti', precio: 8000}], 
+        bebidas: [{nombre: 'Coca-Cola', precio: 2000}, {nombre: 'Cafe Turco', precio: 3500}, {nombre: 'Sabich', precio: 8900}] 
+    },
+    {
+        nombre: 'ColombiaMex', 
+        direccion: 'Crr 7', 
+        telefono: '89999', 
+        tipoComida: ['Fusion', 'Colombiana', 'Asiatica'], 
+        platos: [{nombre: 'Arepas de Sushi', precio: 45000}, {nombre: 'Salmon con Frijoles', precio: 80000}, {nombre: 'Pollo tempura con sancocho', precio: 40000}], 
+        bebidas:[{nombre: 'Pepsi', precio: 1800}, {nombre: 'Jugo de Lulo', precio: 3400}, {nombre: 'Sake', precio: 10000}] 
+    },
+    {
+        nombre: 'ABaC', 
+        dirección: 'Calle 170', 
+        telefono: '19999', 
+        tipoComida: ['Española', 'Italiana', 'Portuguesa', 'Francesa'], 
+        platos: [{nombre: 'Paella', precio: 150000}, {nombre: 'Pizza Napolitana', precio: 16000}, {nombre: 'Caracoles en Mantequilla', precio: 60000}, {nombre: 'Ancas de Rana', precio: 90000}, {nombre: 'Caldo Verde', precio: 150000}],
+        bebidas: [{nombre: 'Big-Cola', precio: 15000}, {nombre: 'Té', precio: 3000}, {nombre: 'Sidra', precio: 30000}, {nombre: 'Vino', precio: 250000}] 
+    },
+    {
+        nombre: 'Centrico', 
+        direccion: 'Crr 45', 
+        telefono: '33333', 
+        tipoComida: ['Venezolana', 'Panameña', 'Española'], 
+        platos: [ {nombre: 'Arepa Rellena', precio: 45000}, {nombre: 'Pabellon Criollo', precio: 89000}, {nombre: 'Hallacas', precio: 5000}, {nombre: 'Tapas', precio: 15000}, {nombre: 'Casuela de Mariscos', precio: 55000}, {nombre: 'Ojaldra', precio: 10000}],
+        bebidas: [{nombre: 'Vino', precio: 185000}, {nombre: 'Cerveza Artesanal', precio: 4000}, {nombre: 'Jugos Variados', precio: 35000}]
+    },
+    {
+        nombre: 'Naturalmente Vegano', 
+        direccion: 'Calle 3', 
+        telefeno: '46666', 
+        tipoComida: ['Vegetariana', 'Vegana', 'Natural', 'Nada de Carne'], 
+        platos: [{nombre: 'Verduras al Curry', precio: 14000},{nombre: 'Panecillos Asiaticos', precio: 30000},{nombre: 'Chips de Tofu', precio: 34000}],
+        bebidas: [{nombre: 'Liquado de Vegetales', precio: 10000}, {nombre: 'Liquado de Frutas', precio: 11000}, {nombre: 'Agua', precio: 5000}, {nombre: 'Agua con Gas', precio: 6000}]
+    },
+    {
+        nombre: 'La Jugeteria', 
+        direccion: 'Calle 55', 
+        telefono: '789999', 
+        tipoComida: ['Infantil', 'Comida Rapida'], 
+        platos: [{nombre: 'Hamburguesa Toy Story', precio: 13000},{nombre: 'Hot Dog Vaquero', precio: 5000},{nombre: 'Nuggets de Pollo', precio: 10000},{nombre: 'La Cajita Misteriosa', precio: 25000}],
+        bebidas: [{nombre: 'Coca-Cola', precio: 5000}, {nombre: 'Pepsi', precio: 5000}, {nombre: 'Jugo Hit', precio: 3400}, {nombre: 'Tampico', precio: 1500}]
+    }
+)

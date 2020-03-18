@@ -1,0 +1,3 @@
+/*----- NOTAS NodeJS ------*/
+
+npm install nombreModulo --save  //Instala modulos (librerias).

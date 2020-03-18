@@ -1,0 +1,16 @@
+composer
+
+php -v 7.2.0 >
+
+Gestor de dependecias
+
+-------------------------------------------------------------------------------------
+Instalar proyecto Laravel desde composer
+-------------------------------------------------------------------------------------
+composer create-project laravel/laravel prueba_b //Crea proyecto larabel con Composer
+-------------------------------------------------------------------------------------
+
+composer global require laravel/installer
+-------------------------------------------------------------------------------------
+
+php artisan seve //Encendemos el servidor

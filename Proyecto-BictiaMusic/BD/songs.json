@@ -1,0 +1,123 @@
+songs = [
+    {
+        name: 'René',
+        gener: 'Urban',
+        artist: 'Residente',
+        image: '',
+        urlImage: '',
+        songNumber: 1,
+        discName: 'Rene',
+        composer: 'René Pérez Joglar',
+        createAt: '01-03-2020',
+        audio: 
+    },
+    {
+        name: 'Rojo',
+        gener: 'Pop',
+        artist: 'J Balvin',
+        image: '',
+        urlImage: '',
+        songNumber: 3,
+        discName: 'Rojo',
+        composer: 'J Balvin',
+        createAt: '15-01-2020',
+        audio: 
+    },
+    {
+        name: 'Adventure Of A Lifetime ',
+        gener: 'pop',
+        artist: 'Coldplay',
+        image: '',
+        urlImage: '',
+        songNumber: 1,
+        discName: 'Everyday Life',
+        composer: 'Coldplay',
+        createAt: '15-09-2015',
+        audio: 
+    },
+    {
+        name: 'Alors on danse',
+        gener: 'Electrónica',
+        artist: 'Stromae',
+        image: '',
+        urlImage: '',
+        songNumber: 10,
+        discName: 'Alors on danse',
+        composer: 'Stromae',
+        createAt: '30-11-2008',
+        audio: 
+    },
+    {
+        name: 'Caprice N° 24',
+        gener: 'Clásica',
+        artist: 'Niccolò Paganini',
+        image: '',
+        urlImage: '',
+        songNumber: 1,
+        discName: 'Caprice N° 24',
+        composer: 'Niccolò Paganini',
+        createAt: '08-08-1813',
+        audio: 
+    },
+
+    {
+        name: 'Si Tu Amor No Vuelve',
+        gener: 'Reggeton',
+        artist: 'Greeicy & Mike Bahía',
+        image: '',
+        urlImage: '',
+        songNumber: 5,
+        discName: 'Si Tu Amor No Vuelve',
+        composer: 'Greeicy & Mike Bahía',
+        createAt: '10-03-2020',
+        audio: 
+    },
+    {
+        name: 'Quiet Little Voices',
+        gener: 'Rock',
+        artist: 'We Were Promised Jetpacks',
+        image: '',
+        urlImage: '',
+        songNumber: ,
+        discName: 'Quiet Little Voices',
+        composer: 'We Were Promised Jetpacks',
+        createAt: '26-05-2001',
+        audio: 
+    },
+    {
+        name: 'Cake By The Ocean',
+        gener: 'Pop',
+        artist: 'DNCE',
+        image: '',
+        urlImage: '',
+        songNumber: 3,
+        discName: 'Cake By The Ocean',
+        composer: 'DNCE',
+        createAt: '03-07-2017',
+        audio: 
+    },
+    {
+        name: 'Stayin' Alive',
+        gener: 'Disco',
+        artist: 'Bee Gees',
+        image: '',
+        urlImage: '',
+        songNumber: 2,
+        discName: 'Stayin' Alive',
+        composer: 'Bee Gees',
+        createAt: '10-06-1975',
+        audio: 
+    },
+    {
+        name: 'Don't You Worry Child',
+        gener: 'Electrónica',
+        artist: 'Swedish House Mafia ft. John Martin',
+        image: '',
+        urlImage: '',
+        songNumber: 11,
+        discName: 'Don't You Worry Child',
+        composer: 'Swedish House Mafia ft. John Martin',
+        createAt: '13-78-2011',
+        audio: 
+    }
+]

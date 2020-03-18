@@ -1,0 +1,9 @@
+idLibro
+Nombre
+Descripcion 
+idAutor
+Fecha Publicacion
+Editorial
+idCategoria
+precio
+

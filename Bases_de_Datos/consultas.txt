@@ -1,0 +1,9 @@
+SELECT (usuarios.nombre_usuario),ventas.id_venta FROM ventas
+    -> INNER JOIN Usuarios ON ventas.Usuario_id_usuario=Usuarios.id_usuario;
+
+
+SELECT s.nombre_sede, COUNT(vp.Producto_id_producto) AS cantidadProductos, SUM(p.precio_producto) AS Total FROM ventaproductos vp 
+INNER JOIN productos p ON vp.Producto_id_producto = p.id_producto 
+INNER JOIN ventas v ON V.id_venta = vp.Venta_id_venta 
+INNER JOIN sedes S ON s.id_sede = v.Sede_id_sede 
+WHERE v.fecha BETWEEN '2018-11-04' AND '2020-02-11' GROUP BY s.id_sede
