@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div *ngFor=" let song of songs">
+                <button type="button" class="list-group-item list-group-item-action" (click)="changeSong(song.songUrl)">
+                    <span> <img src=" {{song.image}} " alt="Imagen" height="150" width="150"> </span>
+                    <span> {{ song.author }} - {{ song.title }} </span>
+                </button>
+                <p>Url de la canción: {{ song.songUrl }} </p>
+
+                <div>
+                    <p>Nombre de la canción: {{ song.title }} </p>
+                    <p>Nombre del Autor: {{ song.author }} </p>
+                    <img src=" {{song.image}} " alt="Imagen" height="80" width="80">
+                    <p>Url de la canción: {{ song.songUrl }} </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <table>
+                <tr>
+                    <td>
+                        <img src="/assets/images/logo.jpeg" alt="Imagen" width="100px" height="100px">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <audio id="bictiaMusic" src="/assets/music/Hysteria.mp3" controls></audio>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

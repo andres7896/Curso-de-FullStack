@@ -1,0 +1,38 @@
+.contain{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.personaje{
+    border: gray 1px solid;
+    max-width: 300px;
+    height: 750px;
+    border-radius: 5px;
+    margin: 10px 0 15px 0;
+}
+
+.personaje h3{
+    margin: 10px;
+}
+
+.personaje span{
+    margin: 10px;
+    font-size: 15px;
+}
+
+.personaje p{
+    text-align: justify;
+    padding: 5px 10px 5px 10px;
+    width: 100%;
+    height: auto;
+    text-overflow: ellipsis;
+}
+
+.personaje img{
+    width: 100%;
+    max-height: 400px;
+    margin: 0 auto;
+}

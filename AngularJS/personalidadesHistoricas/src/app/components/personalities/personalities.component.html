@@ -1,0 +1,16 @@
+<div>
+    <div class="contain">
+        <div *ngFor=" let per of personalidades">
+            <div class="personaje">
+                <img src=" {{ per.image }} " alt=" {{ per.name }} ">
+                <h3> <strong>  {{ per.name }} </strong> </h3>
+                <hr>
+                <span> {{ per.birth }} - {{ per.death }} </span>
+                <hr>
+                <span> {{ per.country }} </span>
+                <hr>
+                <p> {{ per.description }} </p>
+            </div>
+        </div>
+    </div>
+</div>

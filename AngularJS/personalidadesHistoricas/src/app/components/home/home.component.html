@@ -1,0 +1,16 @@
+<app-carousel></app-carousel>
+
+<div class="contain">
+    <div *ngFor=" let personajes of top">
+        <div class="personaje">
+            <img src=" {{ personajes.image }} " alt=" {{ personajes.name }} ">
+            <h3> <strong>  {{ personajes.name }} </strong> </h3>
+            <hr>
+            <span> {{ personajes.birth }} - {{ personajes.death }} </span>
+            <hr>
+            <span> {{ personajes.country }} </span>
+            <hr>
+            <p> {{ personajes.description }} </p>
+        </div>
+    </div>
+</div>
