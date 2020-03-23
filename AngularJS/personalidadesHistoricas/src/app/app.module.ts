@@ -13,7 +13,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 
 const appRoutes: Routes = [
-  {path: 'index', component: HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'personalidades', component: PersonalitiesComponent},
   {path: 'contacto', component: ContactComponent},
   {path: 'acerca', component: AboutComponent}
