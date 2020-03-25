@@ -1,0 +1,1 @@
+<p>Hola esta es la información personal.</p>
