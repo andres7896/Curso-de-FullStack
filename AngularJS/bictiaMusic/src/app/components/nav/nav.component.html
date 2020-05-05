@@ -1,6 +1,12 @@
 <div class="contain">
     <a routerLink="todaLaMusica"> Ir a toda la musica </a>
-    <a routerLink="registro"> Registrar nuevo usuario </a>
+    <a *ngIf="!loggedin()" routerLink="registro"> Registrar nuevo usuario </a>
+    <a *ngIf="!loggedin(); else elseBlock" routerLink="login"> Login </a>
+        <ng-template #elseBlock>
+            <a (click)="logout()" >Cerrar Sesión</a>
+        </ng-template>
+    <a *ngIf="loggedin()" routerLink="modificarUsuario"> Modificar Usuario</a>
+    <a *ngIf="loggedin()" routerLink="/cambiarContraseña"> Cambiar Contraseña </a>
     <a routerLink=""> Volver al Inicio </a>
 </div>
 

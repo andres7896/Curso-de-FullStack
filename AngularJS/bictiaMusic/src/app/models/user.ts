@@ -1,10 +1,8 @@
-export class User{
-    constructor(
-        public _id: String,
-        public firstName: String,
-        public lastName: String,
-        public email: String,
-        public password: String,
-        public image: String
-    ){}
+export class User {
+    _id: String;
+    firstName: String;
+    lastName: String;
+    email: String;
+    password: String;
+    image: String;
 }

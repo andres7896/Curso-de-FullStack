@@ -1,22 +1,19 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const routers = require('./routers/userRoutes');
+const express = require('express')
+const bodyParser = require('body-parser')
+const routes = require('./routers/userRoutes')
 
-const app = express();
-app.use(bodyParser.json()); //Analiza los datos que se pasan por una URL
+const app = express()
 
-app.use( (req, res, next) => {
-    res.header('Access-Control-All-Origin', '*'); //Configuracion todos los dominios
+app.use(bodyParser.json()) // Analiza los datos que se pasan por un url
 
-    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Content-Type, Accept, Access-Control-Allow-Request-Method'); //Permite todos los metadatos y cookies
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*') // Habilitar que se puede consumir el API
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With,Content-Type, Accept, Access-Control-Allow-Request-Method') //Permitir todos los metadatos y cookies
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS') //Habilitar todos los metodos de http
+    res.header('Allow', 'GET, POST, PUT, DELETE, OPTIONS') //Confirmacion de los metodos
+    next()
+})
 
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); //Habilita todos los metodos de http.
+app.use('/api', routes)
 
-    res.header('Allow', 'GET, POST, PUT, DELETE, OPTIONS'); //Confirmación de los metodos http
-
-    next();
-} )
-
-app.use('/api', routers);
-
-module.exports = app;
+module.exports = app

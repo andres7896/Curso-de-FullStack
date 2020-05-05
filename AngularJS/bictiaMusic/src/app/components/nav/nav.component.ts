@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../models/user';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  user: User
+
+  constructor( private userMod: UserService ) { }
 
   ngOnInit(): void {
+    this.loggedin()
+  }
+
+  loggedin():boolean{
+    if (localStorage.getItem('dataUser')) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  logout(){
+    localStorage.removeItem('dataUser');
   }
 
 }

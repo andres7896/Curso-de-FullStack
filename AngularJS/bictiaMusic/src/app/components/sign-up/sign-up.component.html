@@ -1,17 +1,26 @@
-<form #signUpForm="ngForm" (ngSubmit)="signUp();">
+<div class="registro">
+    <form #signUpForm="ngForm" (ngSubmit)="signUp();">
     
-    <label for="firstName"> Nombres </label>
-    <input type="text" name="firstName" id="firstName" placeholder="Ingresa tu nombre" #firstName="ngModel" [(ngModel)]="user.firstName" />
-    <br/>
-    <label for="lastName"> Apellido </label>
-    <input type="text" name="lastName" id="lastName" placeholder="Ingresa tu apellido" #lastName="ngModel" [(ngModel)]="user.lastName" />
-    <br/>
-    <label for="email"> Email </label>
-    <input type="text" name="email" id="email" placeholder="Ingresa tu correo" #email="ngModel" [(ngModel)]="user.email" />
-    <br/>
-    <label for="password"> Contraseña </label>
-    <input type="text" name="password" id="password" placeholder="Ingresa tu contraseña" #password="ngModel" [(ngModel)]="user.password" />
-    <br/>
-
-    <button>Registrarse</button>
-</form>
+        <h1>Registrar Nuevo Usuario</h1>
+        <br>
+        <label for="firstName"> Nombres </label>
+        <br>
+        <input type="text" name="firstName" id="firstName" placeholder="Ingresa tu nombre" #firstName="ngModel" [(ngModel)]="user.firstName" />
+        <br/>
+        <label for="lastName"> Apellidos </label>
+        <br>
+        <input type="text" name="lastName" id="lastName" placeholder="Ingresa tu apellido" #lastName="ngModel" [(ngModel)]="user.lastName" />
+        <br/>
+        <label for="email"> Email </label>
+        <br>
+        <input type="text" name="email" id="email" placeholder="Ingresa tu correo" #email="ngModel" [(ngModel)]="user.email" />
+        <br/>
+        <label for="password"> Contraseña </label>
+        <br>
+        <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" #password="ngModel" [(ngModel)]="user.password" />
+        <br/>
+    
+        <button>Registrarse</button>
+    </form>
+    
+</div>

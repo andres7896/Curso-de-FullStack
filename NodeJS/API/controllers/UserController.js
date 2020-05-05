@@ -1,5 +1,7 @@
 const User = require('../models/User'); //Exportamos el modelo.
-const crypto = require('crypto');
+const crypto = require('crypto'); //npm install crypto --save
+const fs = require('fs'); 
+const path= require('path'); //npm install path --save
 
 /**
  * Función paraun usuario
@@ -60,20 +62,21 @@ function update(req, res) {
 
     User.findByIdAndUpdate(id, parameters, (error, userUpdated) =>{
         if (error) {
-            res.status(500).send({
+            res.send({
                 message: 'Error en el servidor',
                 statusCode: 500
             })
         }else{
             if (!userUpdated) {
-                res.status(400).send({
+                res.send({
                     message: 'Error al actualizar el usuario',
                     statusCode: 400
                 })
             }else{
-                res.status(200).send({
+                res.send({
                     message: 'Mensaje Actualizado',
-                    statusCode: 200
+                    statusCode: 200,
+                    dataUser: userUpdated
                 })
             }
         }
@@ -85,25 +88,26 @@ function login(req, res) {
 
     User.findOne({ email: params.email }, (error, userLogged) => {
         if (error) {
-            res.status(500).send({
+            res.send({
                 message: 'Error en el servidor',
                 statusCode: 500
             })
         }else{
             if (!userLogged) {
-                res.status(400).send({
+                res.send({
                     message: 'E usuario no existe',
                     statusCode: 400
                 })
             }else{
                 let password = encriptacion(params.password);
                 if (password === userLogged.password) {
-                    res.status(200).send({
+                    res.send({
                         message: 'Los datos son correctos',
-                        statusCode: 200
+                        statusCode: 200,
+                        dataUser: userLogged
                     })
                 }else{
-                    res.status(401).send({
+                    res.send({
                         message: 'Los datos no son correctos',
                         statusCode: 401
                     })
@@ -113,9 +117,88 @@ function login(req, res) {
     })
 }
 
+/**
+ * Función la cual permitira modificar el avatar de usuario
+ * @param {*} req 
+ * @param {*} res 
+ */
+function saveImage(req, res) {
+    let id = req.params.id;
+    if (req.files) {
+        //let imageName = req.files.image.path.split('/').pop();
+
+        console.log(req.files);
+
+        let imageName = req.files.image.path.split('\\');
+        if (imageName.length === 1) {
+            imageName = req.files.image.path.split('/');
+        }
+        imageName = imageName[2]
+        //console.log('Esta es la imagen -----> ', imageName);
+
+        User.findByIdAndUpdate(id, { image: imageName }, ( error, dataUser ) => {
+            if (error) {
+                res.send({
+                    statusCode: 500,
+                })
+            }else if (!dataUser) {
+                res.send({
+                    statusCode: 401
+                })
+            }else{
+                res.send({
+                    statusCode: 200,
+                    dataUser: dataUser,
+                    image: imageName
+                })
+            }
+        });
+    }
+}
+
+function showImage(req, res) {
+    let image = req.params.image;
+    let nameImage = image === 'undefined' ? 'whitoutImage.png' : image; //if corto
+    let imageRoute = './assets/images/'+ nameImage;
+    fs.exists( imageRoute, (exists) => {
+        if (exists) {
+            res.sendFile( path.resolve(imageRoute) );
+        }else{
+            res.send({
+                statusCode: 400,
+                message: 'La imagen no existe'
+            })
+        }
+    })
+}
+
+function changePassword(req, res){
+    let id = req.params.id;
+    let password = encriptacion(req.body.password);
+
+    User.findByIdAndUpdate(id, { password: password }, (error, dataUser) =>{
+        if (error) {
+            res.send({
+                statusCode: 500
+            })
+        }else if (!dataUser) {
+            res.send({
+                statusCode: 401
+            })
+        }else{
+            res.send({
+                statusCode: 200
+            })
+        }
+    })
+}
+
 
 module.exports = {
     create, 
     update,
-    login
+    login, 
+    saveImage,
+    showImage,
+    changePassword
 }

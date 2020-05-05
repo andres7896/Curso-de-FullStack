@@ -12,7 +12,7 @@ export class SignUpComponent implements OnInit {
   public user: User;
 
   constructor(private service: UserService) {
-    this.user = new User('', '', '', '', '', '');
+    this.user = new User();
   }
 
   signUp(){

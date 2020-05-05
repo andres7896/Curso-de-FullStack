@@ -1,0 +1,20 @@
+<div class="update">
+    <form #updateUserForm="ngForm" (ngSubmit)="updateUser();" >
+        <h1>Actualización de Usuario</h1>
+        <br>
+        <label for="firstName"> Nombre </label>
+        <input type="text" name="firstName" id="firstName" #firstName="ngModel" [(ngModel)]="user.firstName" />
+        <br>
+        <label for="lastName"> Apellido </label>
+        <input type="text" name="lastName" id="lastName" #lastName="ngModel" [(ngModel)]="user.lastName" />
+        <br>
+        <label for="email"> Correo: {{ user.email }} </label>
+        <br>
+        <input type="file" name="image" id="image" accept="image/*" (change)="loadImage($event);" width="50%"/>
+        <br>
+        <br>
+        <img id="imageUser" src="{{url + '/showImage/' + user.image}}" alt="" width="150px" height="150px">
+        <br>
+        <button> Modificar datos </button>
+    </form>
+</div>

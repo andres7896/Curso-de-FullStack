@@ -11,10 +11,16 @@ import { MusicComponent } from './components/music/music.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { LoginComponent } from './components/login/login.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 const appRoutes: Routes = [
   { path: 'todaLaMusica', component: MusicComponent },
   { path: 'registro', component: SignUpComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'modificarUsuario', component: UpdateUserComponent },
+  { path: 'cambiarContraseña', component: ChangePasswordComponent },
   { path: '', component: SaludoComponent }
 ];
 
@@ -25,7 +31,10 @@ const appRoutes: Routes = [
     MusicComponent,
     NavComponent,
     FooterComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoginComponent,
+    UpdateUserComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +42,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
